@@ -5,11 +5,16 @@ import axios from 'axios'
 const ViewAll = () => {
     const[data,changeData]=useState([])
     const fetchData = () =>{
-        axios.get("https://anishpdm.github.io/dummy-api-new/student.json").then(
+        axios.get("https://courseapplogix.onrender.com/getdata").then(
         (response) => {
             changeData(response.data)
         }
-    ).catch().finally()
+    ).catch(
+        (error)=>{
+            console.log(error.message)
+            alert(error.message)
+        }
+    ).finally()
         }
     
     useEffect(()=>{fetchData()},[])
@@ -52,7 +57,7 @@ const ViewAll = () => {
                                             <td>{value.mobile}</td>
                                             <td>{value.email}</td>
                                             <td>{value.address}</td>
-                                            <td>{value.__}</td>
+                                            <td>{value.__v}</td>
                                             
                                         </tr>}
                                        )}
